@@ -1,0 +1,30 @@
+extends layout
+
+block content 
+
+  div.left_panel
+    img#pictureLogo(src='../images/logo-transparent2.png')
+  
+  div.right_panel
+    .title_desc Some logo and a bunch of description. Blah blah blah blah blhab lkj sk kljldfsd. skdjldfk s..dsf kljd slkj
+
+    #message
+      if message
+        h2.text-center.error-message #{message}
+
+    p Not a user yet?
+    input#signupButton(type='button', value='Sign up now')
+  
+block index_navbar
+  div.navbar.navbar-inverse.navbar-fixed-top#mainNavbar
+    div.container
+      ul.nav.navbar-nav
+        li
+          img#afterthreelogo(src='../images/afterthree_logo_white.png')
+      ul.nav.navbar-nav.navbar-right 
+        li
+          a#loginButton Log In
+
+block content_modal
+  div.greyedOutOverlay
+  div.modal

@@ -1,0 +1,29 @@
+extends main
+
+block content
+  h1= title
+
+  form(class='form-suggest', action='/suggest', method='POST')
+    label(for='eventName') Event Name:
+    input#eventName(type='text', name='eventName', class='form-control', placeholder='Event Name',required, autofocus)
+    br
+    label(for='eventDesc') Description:
+    input#eventDesc(type='text', name='eventDesc', class='form-control', placeholder='Description of the event', required)
+    br
+    label(for='eventCat') Event Category:
+    select#eventCat.form-control(onChange='onDropdownChange(this);')
+      option(value='category1') Category 1 
+      option(value='category2') Category 2
+      option(value='category3') Category 3
+      option(value='category4') Category 4
+    input#eventCatHidden(type='text', name='eventCatHidden', value='category1', style='display:none;')
+    button(class='btn btn-lg btn-primary btn-block', type='submit') Submit!
+    span.clearfix
+
+
+block content_scripts
+  script(type='text/javascript').
+    function onDropdownChange(dropDown){
+    var selectedValue = dropDown.options[dropDown.selectedIndex].value;
+    document.getElementById("eventCatHidden").value = selectedValue;
+    }

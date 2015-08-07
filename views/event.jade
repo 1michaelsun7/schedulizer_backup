@@ -1,0 +1,39 @@
+extends main
+
+block content2
+	div.singleEvent
+		if evt
+			div.eventid #{evt._id}
+			if evt.description
+				p#eventDescript #{evt.description}
+			if cont
+				each c in cont
+					a.website-link.draggable.ui-draggable.ui-draggable-handle(title="#{c.url}", href="#{c.url}", target="_blank")
+						img.website-image(src="http://free.pagepeeker.com/v2/thumbs.php?size=m&url=#{c.url}")
+						span.website-url #{c.name}
+					if c.creator == user._id
+
+
+block content_extra
+	if user.isAdmin || user.isSuperAdmin
+		a#add-website.btn.btn-default.studentHidden(role='button') Add Content
+
+block content_scripts
+	script(src='//code.jquery.com/ui/1.11.4/jquery-ui.js')
+	script(type='text/javascript' src='/javascripts/addcontent.js')
+
+
+block content_modal
+	div.greyedOutOverlay
+	#add-website-modal.modal(tabindex='-1', role='dialog', aria-labelledby='add-website-modal', aria-hidden='true')
+		button.close(type='button')
+			span(aria-hidden='true') ×
+		h4#add-website-modal-label.modal-title Add Website
+		label(for='newWebsite') Website URL:
+		.input-group
+			span#url-beginning.input-group-addon http://www.
+			input#website-url.form-control(type='text', aria-describedby='url-beginning', autocomplete='off')
+		br
+		p#add-website-error-msg.error-message
+		button#cancel-add-website.btn.btn-default.pull-right(type='button') Cancel
+		button#add-website-btn.btn.btn-primary.pull-right(type='submit') Add

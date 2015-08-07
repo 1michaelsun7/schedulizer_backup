@@ -1,0 +1,36 @@
+extends main
+
+block content2
+	if leaderboard
+		each evt, index in leaderboard 
+			div.event.mix(class="#{evt.category}")(id=index===0 ? 'first-event' : '')
+				div.eventid #{evt._id}
+				div.rank= index+1
+				div.col-xs-2
+					div.thumbsUp 
+						if !evt.isUserAttending(user._id)
+							a.btn.btn-default.likeButton(role='button') Like!
+						if evt.isUserAttending(user._id)
+							a.btn.btn-success.unlikeButton(role='button') Like!
+					
+					div.upvotes
+						span.glyphicon.glyphicon-arrow-up #{evt.upvotes}
+				div.col-xs-4(onclick="window.location='/event?id=#{evt._id}'")
+					div.eventTitle #{evt.name}
+					div.eventDesc #{evt.description}
+				div.col-xs-3
+					if user.isAdmin || user.isSuperAdmin
+						if evt.sponsor == user.name
+							a.unsponsorThis.btn.btn-success(href='#', role='button') Unsponsor
+						else if evt.sponsor == ""
+							a.sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
+					div.sponsorName Sponsor: #{evt.sponsor}
+					div.happening
+						if !evt.sponsored
+							p
+						else if evt.sponsor !== user.name
+							| Date Happening:
+							p #{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}
+						else 
+							| Date Happening:
+							input.scheduler(type='text', value='#{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}', placeholder="mm/dd/yyyy")

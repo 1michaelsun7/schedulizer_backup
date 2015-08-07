@@ -1,0 +1,21 @@
+extends main
+
+block content
+	if allusers
+		each u, index in allusers
+			div.userBlock
+				p.usersid #{u._id}
+				br
+				p.userName #{u.name}
+				br
+				p.userEmail #{u.email}
+				br
+				if u.isSuperAdmin
+					p(style="color:green;") SuperAdmin
+				else if u.isAdmin
+					a.btn.btn-success.isAdmin(role='button') Remove Admin
+				else
+					a.btn.btn-default.isNotAdmin(role='button') Make Admin
+
+block content_scripts
+	script(type='text/javascript' src='/javascripts/adminify.js')

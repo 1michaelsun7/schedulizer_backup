@@ -1,0 +1,120 @@
+extends layout
+
+block content_navbar
+
+  div.navbar.navbar-inverse.navbar-fixed-top#slide-nav(role="navigation")
+    div.container
+      div.navbar-header
+        a.navbar-toggle
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+
+        a(href="/main") 
+          img#afterthreelogo(src='../images/afterthree_logo_white.png')
+
+
+      div#slidemenu
+        ul.nav.navbar-nav.navbar-right.hidden-sm.hidden-xs
+          if user.name
+            li.dropdown
+              a.dropdown-toggle(href="#", data-toggle="dropdown")#helloMessage Hello, #{user.name}!
+              ul.dropdown-menu
+                li
+                  a(href="/logout") Log Out
+
+        ul.nav.navbar-nav.navbar-right.hidden-sm.hidden-xs
+          li
+            a(href="/suggest") Suggest   
+
+        ul.nav.navbar-nav.left-nav.hidden-sm.hidden-xs
+          li   
+            a(href="/leaderboard") Leaderboard
+          li
+            a(href="/upcoming") Upcoming Events
+          li
+            a(href="/myEvents") My Events
+          li.dropdown
+            a.dropdown-toggle(href="#", data-toggle="dropdown") Categories 
+              b.caret
+            ul.dropdown-menu
+              li
+                a.filter(data-filter='.category1') Category1
+              li
+                a.filter(data-filter='.category2') Category2
+              li
+                a.filter(data-filter='.category3') Category3
+              li
+                a.filter(data-filter='.category4') Category4
+
+block content
+  h1= title
+  block content_extra
+  div(style="clear:right;")
+  section#eventsWrapper
+    div.userid #{user._id}
+    div.username(style='display:none;') #{user.name}
+    block content2
+
+block content_scripts
+  script(type='text/javascript').
+    $(function(){
+      $('#eventsWrapper').mixItUp();
+
+      //change active li on click
+      $(".left-nav li").click(function() {
+        $(".left-nav li").removeClass("active");
+        $(this).addClass("active");
+      });
+
+      //stick in the fixed 100% height behind the navbar but don't wrap it
+      $('#slide-nav.navbar .container').append($('<div id="navbar-height-col"></div>'));
+      // Enter your ids or classes
+      var toggler = '.navbar-toggle';
+      var pagewrapper = '#wrapper';
+      var navigationwrapper = '.navbar-header';
+      var menuwidth = '100%'; // the menu inside the slide menu itself
+      var slidewidth = '80%';
+      var menuneg = '-100%';
+      var slideneg = '-80%';
+
+      $("#slide-nav").on("click", toggler, function (e) {
+        console.log("toggggling");
+        var selected = $(this).hasClass('slide-active');
+
+        $('#slidemenu').stop().animate({
+            left: selected ? menuneg : '0px'
+        });
+
+        $('#navbar-height-col').stop().animate({
+            left: selected ? slideneg : '0px'
+        });
+
+        $(pagewrapper).stop().animate({
+            left: selected ? '0px' : slidewidth
+        });
+
+        $(navigationwrapper).stop().animate({
+            left: selected ? '0px' : slidewidth
+        });
+
+        $(this).toggleClass('slide-active', !selected);
+        $('#slidemenu').toggleClass('slide-active');
+
+        $('#wrapper, .navbar, body, .navbar-header').toggleClass('slide-active');
+      });
+      var selected = '#slidemenu, #wrapper, body, .navbar, .navbar-header';
+
+      $(window).on("resize", function () {
+          if ($(window).width() > 767 && $('.navbar-toggle').is(':hidden')) {
+              $(selected).removeClass('slide-active');
+          }
+      });
+
+    });
+
+
+
+
+

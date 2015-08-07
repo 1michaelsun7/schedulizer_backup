@@ -1,0 +1,27 @@
+html
+  head
+    title= title
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Permanent+Marker')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Dosis')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/modals.css')
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    script(src='http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js')
+    script(type='text/javascript' src='/javascripts/main.js')
+    script(src="http://getbootstrap.com/dist/js/bootstrap.js")
+
+  block content_scripts
+
+  body
+    block index_navbar
+      
+    
+    block content_navbar
+      
+    div#wrapper.index
+      block content
+
+    block content_modal
+      
