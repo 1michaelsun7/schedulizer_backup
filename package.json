@@ -19,7 +19,7 @@
     "stylus": "0.42.3"
   },
   "engines": {
-    "node": "0.12.2"
+    "node": "0.12.5"
   },
   "repository": {
     "type": "git",

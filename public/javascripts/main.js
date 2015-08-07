@@ -204,6 +204,7 @@ function createModals(){
 }
 
 function createSignUpModal(){
+	$('.modal').empty();
 	$('.modal').append("<h2><span class='fa fa-sign-in'></span>  Sign Up!</h2>");
 	$('.modal').append("<form action='/signup' method='post'>" +
 		"<div class='form-group'>" +
@@ -226,6 +227,7 @@ function createSignUpModal(){
 }
 
 function createLogInModal(){
+	$('.modal').empty();
 	$('.modal').append("<h2><span class='fa fa-sign-in'></span>  Log In or <a id='createAccount'>Create Account</a></h2>");
 	$('.modal').append("<form action='/login' method='post'>"+
         "<div class='form-group'>" +
