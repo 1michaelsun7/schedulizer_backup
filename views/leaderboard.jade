@@ -23,7 +23,7 @@ block content2
 						if evt.sponsor == user.name
 							a.unsponsorThis.btn.btn-success(href='#', role='button') Unsponsor
 						else if evt.sponsor == ""
-							a.sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
+							a.sponsorThis.btn.btn-default(href='#', role='button') Sponsor!
 					div.sponsorName Sponsor: #{evt.sponsor}
 					div.happening
 						if !evt.sponsored

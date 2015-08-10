@@ -76,11 +76,15 @@ section {
 }
 /* Set up document
 -----------------------------------------------------------------------------*/
+@font-face {
+    font-family: "KGS";
+    src: url("fonts/KGSecondChangeSolid.ttf") format(truetype);
+}
 
 body {
   text-align: center;
   background: #a9a9a9;
-  background-image: url("../images/bluestripes.jpg");
+  background-image: url("../images/Chalkboard.png");
   font-family: 'Dosis';
   margin-top: 0; 
 }
@@ -329,8 +333,9 @@ header nav ul li a:hover {
 }
 
 .eventDesc {
-  font-size: 16pt;
-  height: 90px;
+  font-size: 12pt;
+  max-height: 90px;
+  line-height: 30px;
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
@@ -386,7 +391,8 @@ header nav ul li a:hover {
 
 #add-website {
   float:right;
-  margin-right: 10px;
+  margin-right: 12.5%;
+  /*margin-right: 10px;*/
   margin-bottom: 5px;
 }
 
@@ -446,30 +452,6 @@ header nav ul li a:hover {
   margin-bottom: 2%;*/
 }
 
-/* nav menu after login */
-/* adjust body when menu is open */
-body.slide-active {
-    overflow-x: hidden;
-}
-/*first child of #page-content so it doesn't shift around*/
-.no-margin-top {
-    margin-top: 0px!important
-}
-/*wrap the entire page content but not nav inside this div if not a fixed top, don't add any top padding */
-#wrapper.slide-active {
-    padding-top: 0;
-}
-/* put toggle bars on the left :: not using button */
-#slide-nav .navbar-toggle {
-    cursor: pointer;
-    position: relative;
-    line-height: 0;
-    float: left;
-    margin: 0;
-    width: 30px;
-    height: 40px;
-}
-
 .faq {
   width: 70%;
   border: solid white 1px;
@@ -479,6 +461,7 @@ body.slide-active {
 .faq_title {
   font-size: 24px;
   font-weight: bold;
+  /*font-family: "KGS";*/
 }
 
 .faq_subtitle {

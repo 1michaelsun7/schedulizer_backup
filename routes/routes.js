@@ -97,7 +97,19 @@ module.exports = function(app, passport, qs) {
 	});
 
 	app.get('/main', isAuthenticated, function(req, res, next) {
-	  res.render('main', { title: 'Main Page', user: req.user });
+		// var eventids = [];
+		// Event.getEventsUserAttending(req.user._id, function(err, events){
+		// 	if (err){
+		// 		console.log(err);
+		// 		res.redirect("/main");
+		// 	}
+		// 	events.forEach(function(e){
+		// 		eventids.push(e._id);
+		// 	});
+		// 	console.log(eventids);
+		// 	res.render('main', { title: 'Main Page', user: req.user });
+		// });
+		res.render('main', { title: 'Main Page', user: req.user });
 	});
 
 	app.get('/myEvents', isAuthenticated, function(req, res, next) {
