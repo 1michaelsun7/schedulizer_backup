@@ -306,6 +306,7 @@ header nav ul li a:hover {
   border: 2px solid gray;
   padding: 20px;
   height: 150px;
+  display: block;
   
   border-radius: 10px 10px 10px 10px;
   -moz-border-radius: 10px 10px 10px 10px;
@@ -395,6 +396,10 @@ header nav ul li a:hover {
   margin-right: 12.5%;
   margin-bottom: 5px;
   display: none;
+}
+
+.eventButton {
+  margin-right: ;
 }
 
 /*single event*/

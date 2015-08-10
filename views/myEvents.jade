@@ -28,8 +28,9 @@ block content2
 						else if evt.sponsor !== user.name
 							| Date Happening: #{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}
 						else 
-							| Date Happening: input.scheduler(type='text', value='#{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}', placeholder="mm/dd/yyyy")
+							| Date Happening: 
+							input.scheduler(type='text', value='#{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}', placeholder="mm/dd/yyyy")
 
 block content_extra
-	a#viewPastEvents.filter.btn.btn-default(href='#', data-filter='.attended', role='button') View Past Events
-	a#viewAllEvents.filter.btn.btn-default(href='#', data-filter='all', role='button') View All Events
+	a#viewPastEvents.filter.btn.btn-default.eventButton(href='#', data-filter='.attended', role='button') View Past Events
+	a#viewAllEvents.filter.btn.btn-default.eventButton(href='#', data-filter='all', role='button') View All Events
