@@ -108,7 +108,6 @@ $(document).ready(function(){
 		var target = $(e.target);
 		var params = { eventID: $('.singleEvent').find(".eventid").html(), userID: $("#eventsWrapper").find(".userid").html() };
 		$.get('/upvote', params, function(data){
-			parent.find(".glyphicon").html(data);
 		});
 		target.addClass("unlikeButton");
 		target.addClass("btn-success");
@@ -120,7 +119,6 @@ $(document).ready(function(){
 		var target = $(e.target);
 		var params = { eventID: $('.singleEvent').find(".eventid").html(), userID: $("#eventsWrapper").find(".userid").html() };
 		$.get('/downvote', params, function(data){
-			parent.find(".glyphicon").html(data);
 		});
 		target.addClass("likeButton");
 		target.addClass("btn-default");
