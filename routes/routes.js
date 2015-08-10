@@ -1,5 +1,6 @@
 var Event = require("../models/event.js");
 var Content = require("../models/content.js");
+var Notif = require("../models/notif.js");
 var User = require('../models/user');
 
 var isAuthenticated = function (req, res, next) {
@@ -97,19 +98,31 @@ module.exports = function(app, passport, qs) {
 	});
 
 	app.get('/main', isAuthenticated, function(req, res, next) {
-		// var eventids = [];
-		// Event.getEventsUserAttending(req.user._id, function(err, events){
-		// 	if (err){
-		// 		console.log(err);
-		// 		res.redirect("/main");
-		// 	}
-		// 	events.forEach(function(e){
-		// 		eventids.push(e._id);
-		// 	});
-		// 	console.log(eventids);
-		// 	res.render('main', { title: 'Main Page', user: req.user });
-		// });
-		res.render('main', { title: 'Main Page', user: req.user });
+		var eventids = [];
+		var nos = [];
+		Event.getEventsUserAttending(req.user._id, function(err, events){
+			if (err){
+				console.log(err);
+				res.render('main', { title: 'Main Page', user: req.user });
+			}
+			events.forEach(function(e){
+				eventids.push(e._id);
+			});
+			console.log(eventids);
+			Notif.getAllNotifsForEvent(eventids, function(err, notifs){
+				if (err){
+					console.log(err);
+					res.render('main', { title: 'Main Page', user: req.user });
+				}
+				notifs.forEach(function(n){
+					nos.push(n);
+				});
+				console.log(nos);
+				res.render('notifcenter', { title: 'Main Page', user: req.user, notifs: nos });
+			});
+			
+		});
+		// res.render('main', { title: 'Main Page', user: req.user });
 	});
 
 	app.get('/myEvents', isAuthenticated, function(req, res, next) {
@@ -190,8 +203,15 @@ module.exports = function(app, passport, qs) {
 		  	console.log(evt);
 			if (!evt.sponsored){
 				evt.sponsoring(req.query.username, function(){
-			  		console.log('sending');
-			  		res.send(req.query.username);
+					var note = new Notif();
+					note.text = "Event " + evt.name + " sponsored by " + req.query.username + ".";
+					note.eventId = req.query.eventID;
+					note.save(function(err, newnote){
+						console.log('sending');
+						console.log(newnote);
+			  			res.send(req.query.username);
+					});
+			  		
 			  	});
 			}
 		  	
@@ -227,7 +247,7 @@ module.exports = function(app, passport, qs) {
 				res.send(req.query.eventDate);
 			});
 		  	
-		  });
+		});
 	});
 
 	//ADMINIFY

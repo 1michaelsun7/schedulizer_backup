@@ -1,0 +1,9 @@
+extends main
+
+block content2
+	h2.notifcenter Notification Center
+	if notifs
+		each no in notifs
+			div.notification #{no.text}
+	else
+		div.notification No Notifications

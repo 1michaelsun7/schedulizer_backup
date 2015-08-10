@@ -78,14 +78,14 @@ section {
 -----------------------------------------------------------------------------*/
 @font-face {
     font-family: "KGS";
-    src: url("fonts/KGSecondChangeSolid.ttf") format(truetype);
+    src: url("KGSecondChangeSolid.ttf");
 }
 
 body {
   text-align: center;
   background: #a9a9a9;
   background-image: url("../images/Chalkboard.png");
-  font-family: 'Dosis';
+  font-family: 'Yanone Kaffeesatz';
   margin-top: 0; 
 }
 
@@ -93,7 +93,7 @@ body {
   width: 100%;
   text-align: center;
   color: white;
-  font-family: 'Dosis';
+  /*font-family: 'Dosis';*/
   float: left;
   margin-top: 60px;
 }
@@ -185,6 +185,7 @@ header nav ul li a:hover {
   margin-top:10px;
   margin-bottom: 10px;
   margin-right: 10px;
+  margin-left: 20px;
 }
 
 #pictureLogo {
@@ -264,10 +265,26 @@ header nav ul li a:hover {
   text-align: left;
 }
 
+/*notifications*/
+
+.notifcenter {
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 24pt;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.notification{
+  text-align: left;
+  width: 100%;
+  padding: 30px;
+  border: 1px solid white;
+}
+
 /*events divs
 ---------------------------------------------------------------------------------------------------*/
 #wrapper h1 {
-  font-family: 'Dosis';
+  font-family: 'Yanone Kaffeesatz';
   font-size: 40px;
   margin: 10px;
 }
@@ -275,6 +292,7 @@ header nav ul li a:hover {
 #eventsWrapper{
   padding-top: 10px;
   padding-bottom: 10px;
+  font-family: 'Yanone Kaffeesatz';
   /*overflow-y: scroll;*/
 }
 
@@ -282,29 +300,28 @@ header nav ul li a:hover {
   display: none;
 }
 
-#first-event{
-  border-top: 1px solid gray;
-}
-
 .event{
   width: 75%;
-  min-width: 750px;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
-  border-bottom: 1px solid gray;
+  max-width: 750px;
+  border: 2px solid gray;
   padding: 20px;
   height: 150px;
   
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
   background: rgba(63, 63, 112, 0.5)
 }
 
 .singleEvent{
   margin: 10px auto;
   width: 75%;
-  min-width: 750px;
+  max-width: 750px;
   border: 1px solid gray;
   padding: 20px;
-  height: 400px;
+  /*min-height: 200px;*/
+  height: auto;
+  overflow: auto;
   background: rgba(63, 63, 112, 0.5)
 }
 
@@ -329,7 +346,10 @@ header nav ul li a:hover {
 }
 
 .eventTitle {
-  font-size: 20pt;
+  font-family: 'Shadows Into Light';
+  font-size: 18pt;
+  font-weight: bold;
+  color: #FFFF66;
 }
 
 .eventDesc {
@@ -459,9 +479,10 @@ header nav ul li a:hover {
 }
 
 .faq_title {
+  font-family: 'Shadows Into Light';
   font-size: 24px;
   font-weight: bold;
-  /*font-family: "KGS";*/
+  margin-bottom: 15px;
 }
 
 .faq_subtitle {
@@ -473,4 +494,9 @@ header nav ul li a:hover {
 .faq_description {
   margin-left: 25px;
   margin-bottom: 20px; 
+}
+
+.title1 {
+  font-size: 36px;
+  font-family: 'Shadows Into Light';
 }
