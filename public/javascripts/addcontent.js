@@ -1,4 +1,8 @@
 $(document).ready(function(){
+  $( ".draggable" ).draggable({
+    containment: "parent"
+  });
+
   $("#add-website").on("click", function(){
     $('.greyedOutOverlay').fadeIn("slow", function(){
       $('#add-website-modal').fadeIn("slow");
@@ -18,9 +22,7 @@ $(document).ready(function(){
       $("#website-url").val("");
       $(".singleEvent").append(createWebsiteObject(url));
 
-      $( ".draggable" ).draggable({
-        containment: "parent"
-      });
+      
       $('.greyedOutOverlay').hide();
       $("#add-website-modal").hide();
 
@@ -53,6 +55,16 @@ $(document).ready(function(){
     $('.greyedOutOverlay').hide();
     $('#add-website-modal').hide();
   });
+
+  $(".website-link").on('click', '.removeEvent', function(e){
+    e.preventDefault();
+    var target = $(e.target);
+    var parent = $(e.target.parentNode);
+    var conttitle = parent[0].title;
+    parent.remove();
+    var params = {conturl: conttitle, eventID: $(".singleEvent").find(".eventid").html()};
+    $.get('/removecontent', params, function(data){});
+  })
 });
 
 // Source for thumbnails: http://pagepeeker.com/website-thumbnails-api/

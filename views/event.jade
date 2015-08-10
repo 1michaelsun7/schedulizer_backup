@@ -4,6 +4,15 @@ block content2
 	div.singleEvent
 		if evt
 			div.eventid #{evt._id}
+			div.likeEvent
+				if !evt.isUserAttending(user._id)
+					a.btn.btn-default.likeButton(role='button') Like!
+					br
+					p Sponsor: #{evt.sponsor}
+				if evt.isUserAttending(user._id)
+					a.btn.btn-success.unlikeButton(role='button') Like!
+					br
+					p Sponsor: #{evt.sponsor}
 			if evt.description
 				p#eventDescript #{evt.description}
 			if cont
@@ -11,12 +20,15 @@ block content2
 					a.website-link.draggable.ui-draggable.ui-draggable-handle(title="#{c.url}", href="#{c.url}", target="_blank")
 						img.website-image(src="http://free.pagepeeker.com/v2/thumbs.php?size=m&url=#{c.url}")
 						span.website-url #{c.name}
-					if c.creator == user._id
+						br
+						if c.creator == user._id
+							span.removeEvent Remove
 
 
 block content_extra
 	if user.isAdmin || user.isSuperAdmin
 		a#add-website.btn.btn-default.studentHidden(role='button') Add Content
+	
 
 block content_scripts
 	script(src='//code.jquery.com/ui/1.11.4/jquery-ui.js')

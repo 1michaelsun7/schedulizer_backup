@@ -1,6 +1,9 @@
 var express  = require('express');
 // var nodemailer = require('nodemailer');
 var app      = express();
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 var path     = require('path');
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -37,10 +40,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
 
 // routing
 require('./routes/routes.js')(app, passport, qs);

@@ -104,6 +104,30 @@ $(document).ready(function(){
 		target.removeClass("unlikeButton");
 	});
 
+	$('.singleEvent').on('click', '.likeButton', function(e){
+		var target = $(e.target);
+		var params = { eventID: $('.singleEvent').find(".eventid").html(), userID: $("#eventsWrapper").find(".userid").html() };
+		$.get('/upvote', params, function(data){
+			parent.find(".glyphicon").html(data);
+		});
+		target.addClass("unlikeButton");
+		target.addClass("btn-success");
+		target.removeClass("btn-default");
+		target.removeClass("likeButton");
+	});
+
+	$('.singleEvent').on('click', '.unlikeButton', function(e){
+		var target = $(e.target);
+		var params = { eventID: $('.singleEvent').find(".eventid").html(), userID: $("#eventsWrapper").find(".userid").html() };
+		$.get('/downvote', params, function(data){
+			parent.find(".glyphicon").html(data);
+		});
+		target.addClass("likeButton");
+		target.addClass("btn-default");
+		target.removeClass("btn-success");
+		target.removeClass("unlikeButton");
+	});
+
 	$('.scheduler').on('keypress', function(e){
 		var target = $(this);
 		var parent = $(this.parentNode.parentNode.parentNode);

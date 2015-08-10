@@ -374,6 +374,16 @@ header nav ul li a:hover {
 
 /*single event*/
 
+.likeEvent{
+  text-align: left;
+  float: left;
+  margin: 0;
+}
+
+.eventDescript{
+  text-align: center;
+}
+
 #add-website {
   float:right;
   margin-right: 10px;
@@ -458,4 +468,26 @@ body.slide-active {
     margin: 0;
     width: 30px;
     height: 40px;
+}
+
+.faq {
+  width: 70%;
+  border: solid white 1px;
+  text-align: left
+}
+
+.faq_title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.faq_subtitle {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.faq_description {
+  margin-left: 25px;
+  margin-bottom: 20px; 
 }
