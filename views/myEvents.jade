@@ -26,11 +26,9 @@ block content2
 						if !evt.sponsored
 							p
 						else if evt.sponsor !== user.name
-							| Date:
-							p #{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}
+							| Date Happening: #{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}
 						else 
-							| Date:
-							input.scheduler(type='text', value='#{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}', placeholder="mm/dd/yyyy")
+							| Date Happening: input.scheduler(type='text', value='#{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}', placeholder="mm/dd/yyyy")
 
 block content_extra
 	a#viewPastEvents.filter.btn.btn-default(href='#', data-filter='.attended', role='button') View Past Events

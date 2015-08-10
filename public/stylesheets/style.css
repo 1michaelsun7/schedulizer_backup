@@ -499,6 +499,11 @@ header nav ul li a:hover {
   margin-bottom: 20px; 
 }
 
+.intro {
+  margin-top: 10px;
+  margin-bottom: 15px; 
+}
+
 .title1 {
   font-size: 36px;
   font-family: 'Shadows Into Light';
