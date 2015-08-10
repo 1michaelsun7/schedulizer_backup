@@ -200,7 +200,6 @@ module.exports = function(app, passport, qs) {
 		  	if (err){
 		  		console.log(err);
 		  	}
-		  	console.log(evt);
 			if (!evt.sponsored){
 				evt.sponsoring(req.query.username, function(){
 					var note = new Notif();
@@ -223,7 +222,6 @@ module.exports = function(app, passport, qs) {
 		  	if (err){
 		  		console.log(err);
 		  	}
-		  	console.log(evt);
 			if (evt.sponsor == req.query.username){
 				evt.unsponsoring(function(){
 			  		console.log('sending');
@@ -243,8 +241,16 @@ module.exports = function(app, passport, qs) {
 		  	}
 		  	console.log(evt);
 			evt.schedulize(req.query.eventDate, function(){
-				console.log('sending');
-				res.send(req.query.eventDate);
+				var note = new Notif();
+				var d = req.query.eventDate;
+				note.text = "Event " + evt.name + " scheduled for " + req.query.eventDate.substring(0, 15) + ".";
+				note.eventId = req.query.eventID;
+				note.save(function(err, newnote){
+					console.log('sending');
+					console.log(newnote);
+					res.send(req.query.eventDate);
+				});
+				
 			});
 		  	
 		});
@@ -260,6 +266,7 @@ module.exports = function(app, passport, qs) {
 			
 			u.isAdmin = true;
 			u.save();
+
 			console.log(u);
 		})
 	});

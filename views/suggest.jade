@@ -1,7 +1,7 @@
 extends main
 
 block content
-  h1= title
+  div.title1= title
   form(class='form-suggest', action='/suggest', method='POST')
     label(for='eventName') Event Name:
     input#eventName(type='text', name='eventName', class='form-control', placeholder='Event Name',required, autofocus)

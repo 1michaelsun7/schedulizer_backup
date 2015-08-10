@@ -474,8 +474,11 @@ header nav ul li a:hover {
 
 .faq {
   width: 70%;
-  border: solid white 1px;
-  text-align: left
+  border: solid gray 2px;
+  text-align: left;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
 }
 
 .faq_title {
