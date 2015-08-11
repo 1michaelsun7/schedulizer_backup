@@ -26,7 +26,7 @@ $(document).ready(function(){
       $('.greyedOutOverlay').hide();
       $("#add-website-modal").hide();
 
-      var params = {conturl: url, userID: $("#eventsWrapper").find(".userid").html(), eventID: $(".singleEvent").find(".eventid").html()};
+      var params = {eventname: $('.title1').html(), conturl: url, userID: $("#eventsWrapper").find(".userid").html(), eventID: $(".singleEvent").find(".eventid").html()};
       $.post('/addcontent', params, function(data){});
              
     } else{

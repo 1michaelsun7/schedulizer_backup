@@ -55,7 +55,7 @@ $(document).ready(function(){
 		var parent = $(e.target.parentNode.parentNode);
 		var params = { eventID: parent.find(".eventid").html(), username: $("#eventsWrapper").find(".username").html() };
 		$.get('/adminsponsor', params, function(data){
-			parent.find(".sponsorName").html("Sponsor: " + data);
+			location.reload();
 		});
 		target.html("Unsponsor");
 		target.addClass("unsponsorThis");
@@ -69,7 +69,7 @@ $(document).ready(function(){
 		var parent = $(e.target.parentNode.parentNode);
 		var params = { eventID: parent.find(".eventid").html(), username: $("#eventsWrapper").find(".username").html() };
 		$.get('/adminunsponsor', params, function(data){
-			parent.find(".sponsorName").html("Sponsor: ");
+			location.reload();
 		});
 		target.html("Sponsor this event!");
 		target.addClass("sponsorThis");
@@ -131,9 +131,7 @@ $(document).ready(function(){
 		var parent = $(this.parentNode.parentNode.parentNode);
 		if (e.keyCode === 13 ){
 			var curDate = $(this).val();
-			console.log(curDate);
 			var splitDate = curDate.split('/');
-			console.log(splitDate);
 			if (splitDate.length !== 3){
 				$(this).val("Invalid date: must be of form mm/dd/yyyy");
 			} else {
@@ -158,7 +156,7 @@ $(document).ready(function(){
 					} else {
 						var params = {eventID: parent.find(".eventid").html(), eventDate: newDate};
 						$.get('/schedulize', params, function(data){
-							console.log(data);
+							location.reload();
 						});
 					}
 				}

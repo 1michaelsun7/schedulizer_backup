@@ -43,6 +43,10 @@ var eventSchema = new mongoose.Schema({
 	attendees: [String]
 });
 
+eventSchema.statics.getAllEvents = function(cb){
+	return this.find({}).sort({upvotes: 'desc'}).exec(cb);
+}
+
 eventSchema.statics.findByName = function (name, cb) {
 	return this.find({ name: new RegExp(name, 'i') }, cb);
 }

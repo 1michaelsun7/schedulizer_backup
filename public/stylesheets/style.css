@@ -113,7 +113,14 @@ body {
   margin-top: 50px;
   margin-bottom: 50px;
 }
+.index_message {
+  display: inline-block;
+}
 
+#signupButton {
+  display: block;
+  margin-top: 20px;
+}
 
 .error-message {
   margin-top: 10%;
@@ -267,6 +274,10 @@ header nav ul li a:hover {
 
 /*notifications*/
 
+.notif_container {
+  max-width: 750px;
+}
+
 .notifcenter {
   font-family: 'Yanone Kaffeesatz';
   font-size: 24pt;
@@ -275,11 +286,18 @@ header nav ul li a:hover {
 }
 
 .notification{
+  font-size: 18px;
   text-align: left;
   width: 100%;
   padding: 30px;
-  border: 1px solid white;
+  border: 2px solid gray;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+/*  background: rgba(63, 63, 112, 0.5);*/
+
 }
+
 
 /*events divs
 ---------------------------------------------------------------------------------------------------*/
@@ -303,26 +321,33 @@ header nav ul li a:hover {
 .event{
   width: 75%;
   max-width: 750px;
-  border: 2px solid gray;
   padding: 20px;
   height: 150px;
   display: block;
   
+  border: 2px solid gray;
   border-radius: 10px 10px 10px 10px;
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
-  background: rgba(63, 63, 112, 0.5)
+  background: rgba(63, 63, 112, 0.5);
 }
 
 .singleEvent{
   margin: 10px auto;
   width: 75%;
   max-width: 750px;
-  border: 1px solid gray;
+
+  border: 2px solid gray;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  background: rgba(63, 63, 112, 0.5);
+
   padding: 20px;
   /*min-height: 200px;*/
   height: auto;
   overflow: auto;
+  display: block;
   background: rgba(63, 63, 112, 0.5)
 }
 
@@ -354,7 +379,7 @@ header nav ul li a:hover {
 }
 
 .eventDesc {
-  font-size: 12pt;
+  font-size: 14pt;
   max-height: 90px;
   line-height: 30px;
   overflow: hidden;
@@ -494,12 +519,13 @@ header nav ul li a:hover {
 }
 
 .faq_subtitle {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   margin-left: 20px;
 }
 
 .faq_description {
+  font-size: 16px;
   margin-left: 25px;
   margin-bottom: 20px; 
 }

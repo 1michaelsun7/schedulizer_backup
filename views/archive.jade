@@ -1,0 +1,32 @@
+extends main
+
+block content2
+	if allevents
+		each evt, index in allevents 
+			div.event.mix(class="#{evt.category}")
+				div.eventid #{evt._id}
+				div.rank= index+1
+				div.col-xs-2
+					div.thumbsUp 
+						if !evt.isUserAttending(user._id)
+							a.btn.btn-default.likeButton.disabled(role='button') Like!
+						if evt.isUserAttending(user._id)
+							a.btn.btn-success.unlikeButton.disabled(role='button') Like!
+					
+					div.upvotes
+						span.glyphicon.glyphicon-arrow-up #{evt.upvotes}
+				div.col-xs-4(onclick="window.location='/event?id=#{evt._id}'")
+					div.eventTitle #{evt.name}
+					div.eventDesc #{evt.description}
+				div.col-xs-3
+					if user.isAdmin || user.isSuperAdmin
+						if evt.sponsor == user.name
+							a.unsponsorThis.btn.btn-success.disabled(href='#', role='button') Unsponsor
+						else if evt.sponsor == ""
+							a.sponsorThis.btn.btn-default.disabled(href='#', role='button') Sponsor!
+					div.sponsorName Sponsor: #{evt.sponsor}
+					div.happening
+						if !evt.sponsored
+							p
+						else
+							| Date Happening: #{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}

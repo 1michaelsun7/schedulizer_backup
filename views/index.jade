@@ -6,14 +6,16 @@ block content
     img#pictureLogo(src='../images/logo-transparent2.png')
   
   div.right_panel
-    .title_desc AfterThree is an after-school activities crowdsourcing platform.
+    div.title_desc AfterThree is an after-school activities crowdsourcing platform.
+    br
 
     #message
       if message
         h2.text-center.error-message #{message}
 
-    p Not a user yet?
-    input#signupButton(type='button', value='Sign up now')
+    div.index_message Not a user yet?
+      input#signupButton(type='button', value='Sign up now')
+      br
   
 block index_navbar
   div.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
