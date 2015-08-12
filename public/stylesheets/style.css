@@ -76,17 +76,16 @@ section {
 }
 /* Set up document
 -----------------------------------------------------------------------------*/
-@font-face {
-    font-family: "KGS";
-    src: url("KGSecondChangeSolid.ttf");
-}
-
 body {
   text-align: center;
   background: #a9a9a9;
-  background-image: url("../images/Chalkboard.png");
-  font-family: 'Yanone Kaffeesatz';
+  background-image: url("../images/chalkboard-blue.jpg");
+  font-family: 'Oxygen';
   margin-top: 0; 
+}
+
+.navbar {
+  font-family: 'Cabin Sketch';
 }
 
 #wrapper {
@@ -279,7 +278,7 @@ header nav ul li a:hover {
 }
 
 .notifcenter {
-  font-family: 'Yanone Kaffeesatz';
+  font-family: 'Cabin Sketch';
   font-size: 24pt;
   text-align: left;
   padding: 0 20px;
@@ -288,23 +287,24 @@ header nav ul li a:hover {
 
 .notification{
   margin: 20px 0;
-  font-size: 18px;
+  font-size: 24px;
+  font-family: 'Cabin Sketch';
   text-align: left;
   width: 100%;
   padding: 30px;
   border: 2px solid gray;
-  border-radius: 10px 10px 10px 10px;
+/* border-radius: 10px 10px 10px 10px;
   -moz-border-radius: 10px 10px 10px 10px;
-  -webkit-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;*/
 /*  background: rgba(63, 63, 112, 0.5);*/
-
+  background: url('../images/chalkboard-black.jpg');
 }
 
 
 /*events divs
 ---------------------------------------------------------------------------------------------------*/
 #wrapper h1 {
-  font-family: 'Yanone Kaffeesatz';
+  font-family: 'Oxygen';
   font-size: 40px;
   margin: 10px;
 }
@@ -312,7 +312,7 @@ header nav ul li a:hover {
 #eventsWrapper{
   padding-top: 10px;
   padding-bottom: 10px;
-  font-family: 'Yanone Kaffeesatz';
+  font-family: 'Oxygen';
   /*overflow-y: scroll;*/
 }
 
@@ -329,10 +329,11 @@ header nav ul li a:hover {
   margin: 10px 0;
   
   border: 2px solid gray;
-  border-radius: 10px 10px 10px 10px;
+/*  border-radius: 10px 10px 10px 10px;
   -moz-border-radius: 10px 10px 10px 10px;
-  -webkit-border-radius: 10px 10px 10px 10px;
-  background: rgba(63, 63, 112, 0.5);
+  -webkit-border-radius: 10px 10px 10px 10px;*/
+  /*background: rgba(63, 63, 112, 0.5);*/
+  background: url('../images/chalkboard-black.jpg');
 }
 
 .singleEvent{
@@ -341,10 +342,10 @@ header nav ul li a:hover {
   max-width: 750px;
 
   border: 2px solid gray;
-  border-radius: 10px 10px 10px 10px;
+ /* border-radius: 10px 10px 10px 10px;
   -moz-border-radius: 10px 10px 10px 10px;
-  -webkit-border-radius: 10px 10px 10px 10px;
-  background: rgba(63, 63, 112, 0.5);
+  -webkit-border-radius: 10px 10px 10px 10px;*/
+  background: url('../images/chalkboard-black.jpg');
 
   padding: 20px;
   min-height: 200px;
@@ -375,10 +376,10 @@ header nav ul li a:hover {
 }
 
 .eventTitle {
-  font-family: 'Shadows Into Light';
+  font-family: 'Cabin Sketch';
   font-size: 18pt;
   font-weight: bold;
-  color: #FFFF66;
+  color: #d6d963;
 }
 
 .eventDesc {
@@ -391,9 +392,11 @@ header nav ul li a:hover {
 }
 
 .rank {
-  font-size: 16pt;
+  font-size: 24pt;
   font-weight: 500;
-  /*margin: 10px 0;*/
+  margin-left: -10px;
+  margin-top: -20px;
+  font-family: 'Cabin Sketch';
   position: absolute;
 }
 
@@ -509,13 +512,14 @@ header nav ul li a:hover {
   width: 70%;
   border: solid gray 2px;
   text-align: left;
-  border-radius: 10px 10px 10px 10px;
+ /* border-radius: 10px 10px 10px 10px;
   -moz-border-radius: 10px 10px 10px 10px;
-  -webkit-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;*/
+  background: url('../images/chalkboard-black.jpg');
 }
 
 .faq_title {
-  font-family: 'Shadows Into Light';
+  font-family: 'Cabin Sketch';
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 15px;
@@ -539,6 +543,6 @@ header nav ul li a:hover {
 }
 
 .title1 {
-  font-size: 36px;
-  font-family: 'Shadows Into Light';
+  font-size: 42px;
+  font-family: 'Cabin Sketch';
 }
