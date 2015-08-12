@@ -239,6 +239,12 @@ function createSignUpModal(){
             "<label>Password</label>" +
             "<input type='password' class='form-control' name='password' required>" +
         "</div>" +
+        "<div class='form-group'>" +
+            "<label>School</label>" +
+            "<select class='form-control' name='school' required>" +
+            "<option>PS119</option>" +
+            "</select>" +
+        "</div>" +
 		"<button type='submit' class='btn btn-lg'>Sign Up!</button>" +
     "</form>");
     $('.modal form').css({

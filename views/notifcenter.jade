@@ -3,8 +3,22 @@ extends main
 block content2
 	div.notif_container.container
 		h2.notifcenter Notification Center
-		if notifs
+		if notifs.length
 			each no in notifs
 				div.notification #{no.text}
 		else
 			div.notification No Notifications
+
+block content_scripts
+	script(type='text/javascript').
+		$(function(){
+			$('.notification').each(function(n){
+				if ($(this).text().indexOf("sponsored by") > -1){
+					$(this).css("border", "2px solid #EE82EE");
+				} else if ($(this).text().indexOf("scheduled for") > -1){
+					$(this).css("border", "2px solid #FFD700");
+				} else {
+					$(this).css("border", "2px solid #00BFFF");
+				}
+			});
+		});
