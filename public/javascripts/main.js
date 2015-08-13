@@ -140,7 +140,7 @@ $(document).ready(function(){
 					$(this).val("Invalid date: date does not exist");
 				} else {
 					var datemonth = splitDate[0];
-					var dateday = (parseInt(splitDate[1])+1).toString();
+					var dateday = (parseInt(splitDate[1])).toString();
 					if (splitDate[0] < 10){
 						datemonth = "0" + datemonth;
 					}
