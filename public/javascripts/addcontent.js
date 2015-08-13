@@ -1,7 +1,4 @@
 $(document).ready(function(){
-  $( ".draggable" ).draggable({
-    containment: "parent"
-  });
 
   $("#add-website").on("click", function(){
     $('.greyedOutOverlay').fadeIn("slow", function(){

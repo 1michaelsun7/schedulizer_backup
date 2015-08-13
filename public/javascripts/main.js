@@ -140,7 +140,7 @@ $(document).ready(function(){
 					$(this).val("Invalid date: date does not exist");
 				} else {
 					var datemonth = splitDate[0];
-					var dateday = (parseInt(splitDate[1]) + 1).toString();
+					var dateday = (parseInt(splitDate[1])+1).toString();
 					if (splitDate[0] < 10){
 						datemonth = "0" + datemonth;
 					}
@@ -148,10 +148,11 @@ $(document).ready(function(){
 						dateday = "0" + dateday;
 					}
 					var datestring = splitDate[2] + '-' + datemonth + '-' + dateday;
-					console.log(datestring);
 					var newDate = new Date(datestring);
-					console.log(newDate);
-					if (newDate < d){
+					if (isNaN(newDate.getTime())){
+						//testing for smth like february 30th
+						$(this).val("Invalid date: date does not exist");
+					} else if (newDate < d){
 						$(this).val("Invalid date: date is in past");
 					} else {
 						var params = {eventID: parent.find(".eventid").html(), eventDate: newDate};

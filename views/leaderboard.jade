@@ -18,12 +18,13 @@ block content2
 				div.col-xs-4(onclick="window.location='/event?id=#{evt._id}'")
 					div.eventTitle #{evt.name}
 					div.eventDesc #{evt.description}
+					
 				div.col-xs-3
 					if user.isAdmin || user.isSuperAdmin
 						if evt.sponsor == user.name
 							a.unsponsorThis.btn.btn-success(href='#', role='button') Unsponsor
 						else if evt.sponsor == ""
-							a.sponsorThis.btn.btn-default(href='#', role='button') Sponsor!
+							a.sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
 					div.sponsorName Sponsor: #{evt.sponsor}
 					div.happening
 						if !evt.sponsored

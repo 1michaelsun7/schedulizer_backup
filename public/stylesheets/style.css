@@ -84,6 +84,34 @@ body {
   margin-top: 0; 
 }
 
+/* custom navbar collapse point */
+@media (max-width: 1068px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
 .navbar {
   font-family: 'Cabin Sketch';
 }
@@ -102,17 +130,21 @@ body {
   width: 50%;
 }
 .right_panel {
-  float: right;
+  float: left;
   width: 50%;
-  padding-right: 100px;
+  margin-left: -150px;
+  max-width: 500px;
 }
 .title_desc{
   float: left; 
-  font-size: 24px;
+  font-size: 32px;
   margin-top: 50px;
   margin-bottom: 50px;
+  font-family: 'Cabin Sketch';
 }
 .index_message {
+  font-family: 'Cabin Sketch';
+  font-size: 24px;
   display: inline-block;
 }
 
@@ -124,6 +156,19 @@ body {
 .error-message {
   margin-top: 10%;
   color: red;
+}
+
+.bottom_panel {
+  margin-top: 0px;
+  margin: 50px;
+  display: block;
+  float: right;
+}
+
+.email {
+  font-family: 'Cabin Sketch';
+  font-size: 24px;
+  color: #fad48b;
 }
 
 
@@ -198,7 +243,8 @@ header nav ul li a:hover {
   float: right;
   height: auto;
   width: 80%;
-  margin: 10px;
+  margin-top: 10px;
+  margin-right: -100px;
 }
 
 /* Side navbar
@@ -453,11 +499,13 @@ header nav ul li a:hover {
 }
 
 .website-link {
-    text-align: center;
-    position: absolute;
-    width: 200px;
-    height: 180px;
-    text-decoration: none;
+  display: inline-block;
+  margin: 20px;
+  text-align: center;
+  position: absolute;
+  width: 200px;
+  height: 180px;
+  text-decoration: none;
 }
 
 .website-link:hover {

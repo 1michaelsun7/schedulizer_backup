@@ -2,29 +2,39 @@ extends layout
 
 block content 
 
-  div.left_panel
+  div.container.left_panel
     img#pictureLogo(src='../images/logo-transparent2.png')
   
-  div.right_panel
-    div.title_desc AfterThree is an after-school activities crowdsourcing platform.
+  div.container.right_panel
+    div.title_desc AfterThree is an after-school activities crowdsourcing platform. Our goal is to give students a voice in deciding after-school activites.
     br
 
     #message
       if message
         h2.text-center.error-message #{message}
 
+    
+
+  div.container.bottom_panel
     div.index_message Not a user yet?
       input#signupButton(type='button', value='Sign up now')
       br
+    div.email Have questions? Email us at afterthreeapp@gmail.com.
   
 block index_navbar
   div.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
     div.container-fluid
       div.navbar-header
+        button.navbar-toggle(aria-controls="navbar", data-target="#navbar", data-toggle="collapse", type="button", aria-expanded="false")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+
         a(href="/main") 
           img#afterthreelogo(src='../images/afterthree_logo_white.png')
 
-      div#navbar
+      div.navbar-collapse.collapse
         ul.nav.navbar-nav.navbar-right
           li
             a#loginButton Log In

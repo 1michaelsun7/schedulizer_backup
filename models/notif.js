@@ -10,7 +10,7 @@ var notifSchema = new mongoose.Schema({
 });
 
 notifSchema.statics.getAllNotifsForEvent = function (eventIds, cb) {
-    return this.find({ eventId: { $in: eventIds }, expiration: { $gt: Date.now() } }).exec(cb);
+    return this.find({ eventId: { $in: eventIds }, expiration: { $gt: Date.now() } }).sort({expiration: 'desc'}).exec(cb);
 }
  
 module.exports = mongoose.model('Notif', notifSchema);

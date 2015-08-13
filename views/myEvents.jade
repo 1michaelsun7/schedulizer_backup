@@ -8,7 +8,7 @@ block content2
 				div.rank= index+1
 				div.col-xs-2
 					div.thumbsUp
-						a.btn(role='button', class="#{ evt.isUserAttending(user._id) ? 'unlikeButton btn-success' : 'likeButton btn-default' }") I like it!
+						a.btn(role='button', class="#{ evt.isUserAttending(user._id) ? 'unlikeButton btn-success' : 'likeButton btn-default' } #{ evt.date < Date.now() ? 'disabled' : '' }") Like!
 					
 					div.upvotes
 						span.glyphicon.glyphicon-arrow-up #{evt.upvotes}
@@ -16,20 +16,29 @@ block content2
 					div.eventTitle #{evt.name}
 					div.eventDesc #{evt.description}
 				div.col-xs-3
-					if user.isAdmin || user.isSuperAdmin
-						if evt.sponsor == user.name
-							a.unsponsorThis.btn.btn-success(href='#', role='button') Unsponsor
-						else if evt.sponsor == ""
-							a.sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
-					div.sponsorName Sponsor: #{evt.sponsor}
-					div.happening
-						if !evt.sponsored
-							p
-						else if evt.sponsor !== user.name
-							| Date Happening: #{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}
-						else 
-							| Date Happening: 
-							input.scheduler(type='text', value='#{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}', placeholder="mm/dd/yyyy")
+					if evt.date > Date.now()
+						if user.isAdmin || user.isSuperAdmin
+							if evt.sponsor == user.name
+								a.unsponsorThis.btn.btn-success(href='#', role='button') Unsponsor
+							else if evt.sponsor == ""
+								a.sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
+						div.sponsorName Sponsor: #{evt.sponsor}
+						div.happening
+							if !evt.sponsored
+								p
+							else if evt.sponsor !== user.name
+								| Date Happening: #{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}
+							else 
+								| Date Happening: 
+								input.scheduler(type='text', value='#{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}', placeholder="mm/dd/yyyy")
+					else
+						div.sponsorName Sponsor: #{evt.sponsor}
+						div.happening Date Happened: #{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}
+						div.happening
+							| Did you enjoy the event?
+							a.btn(role='button' class='btn-default') Y
+							a.btn(role='button' class='btn-default', style="float:right;") N
+
 
 block content_extra
 	a#viewPastEvents.filter.btn.btn-default.eventButton(href='#', data-filter='.attended', role='button') View Past Events

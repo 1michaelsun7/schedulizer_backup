@@ -220,8 +220,6 @@ module.exports = function(app, passport, qs) {
 					note.text = "Event " + evt.name + " sponsored by " + req.query.username + ".";
 					note.eventId = req.query.eventID;
 					note.save(function(err, newnote){
-						console.log('sending');
-						console.log(newnote);
 			  			res.send(req.query.username);
 					});
 			  		
@@ -238,7 +236,6 @@ module.exports = function(app, passport, qs) {
 		  	}
 			if (evt.sponsor == req.query.username){
 				evt.unsponsoring(function(){
-			  		console.log('sending');
 			  		res.send(req.query.username);
 			  	});
 			}
@@ -253,15 +250,12 @@ module.exports = function(app, passport, qs) {
 		  	if (err){
 		  		console.log(err);
 		  	}
-		  	console.log(evt);
 			evt.schedulize(req.query.eventDate, function(){
 				var note = new Notif();
 				var d = req.query.eventDate;
 				note.text = "Event " + evt.name + " scheduled for " + req.query.eventDate.substring(0, 15) + ".";
 				note.eventId = req.query.eventID;
 				note.save(function(err, newnote){
-					console.log('sending');
-					console.log(newnote);
 					res.send(req.query.eventDate);
 				});
 				
@@ -332,6 +326,31 @@ module.exports = function(app, passport, qs) {
 					throw err;
 				}
 				res.redirect('/event?id=' + req.query.eventID);
+			});
+		});
+	});
+
+	//LIST OF ATTENDEES
+
+	app.get('/viewattendees', isAuthenticated, function(req, res, next){
+		var listofattendees = [];
+		Event.findOne({_id: req.query.eventID}, function(err, evt){
+			if (err){
+				console.log(err);
+				throw err;
+			}
+			console.log(evt);
+			var listofids = evt.attendees;
+			User.find({_id: {$in: listofids}}, function(err2, atds){
+				if (err2){
+					console.log(err2);
+					throw err2;
+				}
+				atds.forEach(function(atd){
+					listofattendees.push(atd.name);
+				});
+				console.log(listofattendees);
+				res.send(listofattendees);
 			});
 		});
 	});
